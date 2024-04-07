@@ -1,0 +1,1569 @@
+components:
+  schemas:
+    AccessRight:
+      properties:
+        fields_create:
+          default: {}
+          title: Fields Create
+          type: object
+          x_frontend_fieldName: Fields Creation
+          x_frontend_placeholder: '{''field_1'': 1, ''field_2'': 1, ''field_3'': 0,
+            ...}'
+        fields_edit:
+          default: {}
+          title: Fields Edit
+          type: object
+          x_frontend_fieldName: Fields Edition
+          x_frontend_placeholder: '{''field_1'': 1, ''field_2'': 1, ''field_3'': 0,
+            ...}'
+        fields_visible:
+          default: {}
+          title: Fields Visible
+          type: object
+          x_frontend_fieldName: Fields Visibility
+          x_frontend_placeholder: '{''field_1'': 1, ''field_2'': 1, ''field_3'': 0,
+            ...}'
+        id:
+          default: ''
+          title: Id
+          type: string
+        model:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: ''
+          title: Model
+          x_frontend_fieldName: Model
+          x_frontend_widget: ModelsSelectableWidget
+        name:
+          default: ''
+          title: Name
+          type: string
+        operations:
+          default: {}
+          title: Operations
+          type: object
+          x_frontend_fieldName: Operations Permitted
+          x_frontend_placeholder: '{''create'': 1, ''read'': 1, ''update'': 0, ''delete'':
+            0, ''search'': 1}'
+        role:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: ''
+          title: Role
+          x_frontend_fieldName: Role
+          x_frontend_relation: Role
+      title: AccessRight
+      type: object
+    Auth:
+      properties:
+        email:
+          title: Email
+          type: string
+        password:
+          title: Password
+          type: string
+      required:
+      - email
+      - password
+      title: Auth
+      type: object
+    Body_search_access_rights_accessrights__post:
+      properties:
+        filters:
+          default: {}
+          title: Filters
+          type: object
+        orders:
+          default: {}
+          title: Orders
+          type: object
+      title: Body_search_access_rights_accessrights__post
+      type: object
+    Body_search_element_dronepilots__post:
+      properties:
+        filters:
+          default: {}
+          title: Filters
+          type: object
+        orders:
+          default: {}
+          title: Orders
+          type: object
+      title: Body_search_element_dronepilots__post
+      type: object
+    Body_search_element_drones__post:
+      properties:
+        filters:
+          default: {}
+          title: Filters
+          type: object
+        orders:
+          default: {}
+          title: Orders
+          type: object
+      title: Body_search_element_drones__post
+      type: object
+    Body_search_element_flightplans__post:
+      properties:
+        filters:
+          default: {}
+          title: Filters
+          type: object
+        orders:
+          default: {}
+          title: Orders
+          type: object
+      title: Body_search_element_flightplans__post
+      type: object
+    Body_search_element_manufacturers__post:
+      properties:
+        filters:
+          default: {}
+          title: Filters
+          type: object
+        orders:
+          default: {}
+          title: Orders
+          type: object
+      title: Body_search_element_manufacturers__post
+      type: object
+    Body_search_element_roles__post:
+      properties:
+        filters:
+          default: {}
+          title: Filters
+          type: object
+        orders:
+          default: {}
+          title: Orders
+          type: object
+      title: Body_search_element_roles__post
+      type: object
+    Drone:
+      properties:
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: ''
+          title: Description
+          x_frontend_editable: true
+          x_frontend_fieldDescription: This is the Drone Description
+          x_frontend_fieldName: Description
+          x_frontend_placeholder: Write short description of your Drone
+        flightplans:
+          items:
+            type: string
+          title: FlightPlans
+          type: array
+          x_frontend_editable: true
+          x_frontend_fieldDescription: These are the Drone's FlightPlans
+          x_frontend_fieldName: FlightPlans
+          x_frontend_placeholder: List the Drone's FlightPlans
+          x_frontend_relation: FlightPlan
+        id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: ''
+          title: Id
+        manufacturer:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: ''
+          title: Manufacturer
+          x_frontend_editable: true
+          x_frontend_fieldDescription: This is the drone Manufacturer
+          x_frontend_fieldName: Manufacturer
+          x_frontend_placeholder: Select the Manufacturer
+          x_frontend_relation: Manufacturer
+        name:
+          title: Name
+          type: string
+          x_frontend_editable: true
+          x_frontend_fieldDescription: This is the Drone Name
+          x_frontend_fieldName: Name
+          x_frontend_placeholder: Write the Name of your Drone
+        ownerId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Owner
+          x_frontend_editable: true
+          x_frontend_fieldDescription: This is the Drone Owner
+          x_frontend_fieldName: Owner
+          x_frontend_placeholder: Select the Drone Owner
+          x_frontend_relation: DronePilot
+      required:
+      - name
+      - flightplans
+      title: Drone
+      type: object
+      x-frontend-defaultFields:
+      - name
+      - description
+      - manufacturer
+      - ownerId
+      - flightplans
+    DronePilot:
+      properties:
+        address:
+          anyOf:
+          - $ref: '#/components/schemas/Point'
+          - type: 'null'
+          title: Address
+          x_frontend_editable: true
+          x_frontend_fieldDescription: The address of the Drone Pilot
+          x_frontend_fieldName: Address
+          x_frontend_placeholder: Enter the address of the Drone Pilot
+        contact_number:
+          title: Contact Number
+          type: string
+          x_frontend_editable: true
+          x_frontend_fieldDescription: This is the contact number of the Drone Pilot
+          x_frontend_fieldName: Contact Number
+          x_frontend_placeholder: Write the contact number here
+        dronesOwned:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          default: []
+          title: Drones Owned
+          x_frontend_editable: true
+          x_frontend_fieldDescription: These are the Drones of the Pilot
+          x_frontend_fieldName: Drones Owned
+          x_frontend_placeholder: List the Drones of the Pilot
+          x_frontend_relation: Drone
+        email:
+          title: Email
+          type: string
+        id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: ''
+          title: Id
+        name:
+          title: Name
+          type: string
+          x_frontend_editable: true
+          x_frontend_fieldDescription: This is the name of the Drone Pilot
+          x_frontend_fieldName: Name
+          x_frontend_placeholder: Write the Name of the Drone Pilot
+        password:
+          title: Password
+          type: string
+        roles:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          default: []
+          title: Roles
+          x_frontend_relation: Role
+      required:
+      - name
+      - email
+      - password
+      - contact_number
+      title: DronePilot
+      type: object
+      x-auth: true
+      x-frontend-defaultFields:
+      - name
+      - contact_number
+      - address
+      - dronesOwned
+    FlightPlan:
+      properties:
+        date:
+          anyOf:
+          - format: date-time
+            type: string
+          - type: 'null'
+          title: Date
+          x_frontend_editable: true
+          x_frontend_fieldDescription: Departure Datetime of the FlightPlan
+          x_frontend_fieldName: Flight Date
+          x_frontend_placeholder: Select a Datetime
+        id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: ''
+          title: Id
+        mission_details:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: ''
+          title: MissionDetails
+          x_frontend_editable: true
+          x_frontend_fieldDescription: These are the important details for the mission
+          x_frontend_fieldName: Mission Details
+          x_frontend_placeholder: Write the mission details here
+        name:
+          title: Name
+          type: string
+          x_frontend_editable: true
+          x_frontend_fieldDescription: This is the Name of the FlightPlan
+          x_frontend_fieldName: Name
+          x_frontend_placeholder: Write the Name of this FlightPlan
+        route:
+          anyOf:
+          - $ref: '#/components/schemas/LineString'
+          - type: 'null'
+          title: Route
+          x_frontend_editable: true
+          x_frontend_fieldDescription: This is Route of the FlightPlan
+          x_frontend_fieldName: Route
+          x_frontend_placeholder: Add the coordinates for the Route
+          x_frontend_uspaceMap: true
+      required:
+      - name
+      title: FlightPlan
+      type: object
+      x-frontend-defaultFields:
+      - name
+      - date
+      - mission_details
+      - route
+    GeometryLineString:
+      properties:
+        coordinates:
+          anyOf:
+          - items:
+              items:
+                type: number
+              type: array
+            type: array
+          - type: 'null'
+          title: Coordinates
+        type:
+          allOf:
+          - $ref: '#/components/schemas/Type'
+          description: the geometry type
+      required:
+      - type
+      title: GeometryLineString
+      type: object
+    GeometryPoint:
+      properties:
+        coordinates:
+          anyOf:
+          - items:
+              type: number
+            type: array
+          - type: 'null'
+          description: Point in 3D space
+          title: Coordinates
+        type:
+          allOf:
+          - $ref: '#/components/schemas/Type'
+          description: the geometry type
+      required:
+      - type
+      title: GeometryPoint
+      type: object
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
+    LineString:
+      properties:
+        geometry:
+          $ref: '#/components/schemas/GeometryLineString'
+        properties:
+          default: {}
+          title: Properties
+          type: object
+        type:
+          default: Feature
+          description: the feature type
+          title: Type
+          type: string
+      required:
+      - geometry
+      title: LineString
+      type: object
+    Manufacturer:
+      properties:
+        certifications_compliance:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: ''
+          title: Certifications/Compliance
+        contact_information:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: ''
+          title: Contact Information
+          x_frontend_editable: true
+          x_frontend_fieldDescription: Contact details for the Manufacturer (e.g.,
+            Email, Phone)
+          x_frontend_fieldName: Contact Information
+          x_frontend_placeholder: Provide Contact Information for the Manufacturer
+        country:
+          title: Country
+          type: string
+          x_frontend_editable: true
+          x_frontend_fieldDescription: Country where the Manufacturer is based
+          x_frontend_fieldName: Country
+          x_frontend_placeholder: Enter the Country of the Manufacturer
+        id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: ''
+          title: Id
+        information:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: ''
+          title: Information
+          x_frontend_editable: true
+          x_frontend_fieldDescription: Information about the Manufacturer
+          x_frontend_fieldName: Information
+          x_frontend_placeholder: Provide Information about the Manufacturer
+        legal_information:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: ''
+          title: Legal Information
+          x_frontend_editable: true
+          x_frontend_fieldDescription: Patents, trademarks, lawsuits, etc.
+          x_frontend_fieldName: Legal Information
+          x_frontend_placeholder: Provide Legal Information for the Manufacturer
+        location:
+          anyOf:
+          - $ref: '#/components/schemas/Point'
+          - type: 'null'
+          title: Location
+          x_frontend_editable: true
+          x_frontend_fieldDescription: Location/Address of the Manufacturer
+          x_frontend_fieldName: Location
+          x_frontend_placeholder: Enter the Location of the Manufacturer
+        name:
+          title: Name
+          type: string
+          x_frontend_editable: true
+          x_frontend_fieldDescription: This is the Manufacturer Name
+          x_frontend_fieldName: Name
+          x_frontend_placeholder: Write the Name of the Manufacturer
+        social_media_links:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: ''
+          title: Social Media Links
+          x_frontend_editable: true
+          x_frontend_fieldDescription: Links to the Manufacturer's social media profiles
+          x_frontend_fieldName: Social Media Links
+          x_frontend_placeholder: Provide Social Media Links for the Manufacturer
+        target_market:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: ''
+          title: Target Market
+          x_frontend_editable: true
+          x_frontend_fieldDescription: Industries served by the Manufacturer
+          x_frontend_fieldName: Target Market
+          x_frontend_placeholder: Describe the Target Market of the Manufacturer
+      required:
+      - name
+      - country
+      title: Manufacturer
+      type: object
+      x-frontend-defaultFields:
+      - name
+      - information
+      - country
+      - location
+      - contact_information
+      - target_market
+      - certifications_compliance
+      - social_media_links
+      - legal_information
+    Point:
+      properties:
+        geometry:
+          $ref: '#/components/schemas/GeometryPoint'
+        properties:
+          default: {}
+          title: Properties
+          type: object
+        type:
+          default: Feature
+          description: the feature type
+          title: Type
+          type: string
+      required:
+      - geometry
+      title: Point
+      type: object
+    Role:
+      properties:
+        id:
+          default: ''
+          title: Id
+          type: string
+        name:
+          title: Name
+          type: string
+      required:
+      - name
+      title: Role
+      type: object
+    Type:
+      enum:
+      - Point
+      - LineString
+      - Polygon
+      - MultiPoint
+      - MultiLineString
+      - MultiPolygon
+      title: Type
+      type: string
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          title: Location
+          type: array
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+      type: object
+info:
+  title: FastAPI
+  version: 0.1.0
+openapi: 3.1.0
+paths:
+  /accessright/:
+    post:
+      operationId: create_access_rights_route_accessright__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccessRight'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Create Access Rights Route
+      tags:
+      - AccessRight
+  /accessright/{element_id}:
+    delete:
+      operationId: delete_access_rights_accessright__element_id__delete
+      parameters:
+      - in: path
+        name: element_id
+        required: true
+        schema:
+          title: Element Id
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Delete Access Rights Accessright  Element Id  Delete
+                type: string
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Delete Access Rights
+      tags:
+      - AccessRight
+    get:
+      operationId: read_access_rights_accessright__element_id__get
+      parameters:
+      - in: path
+        name: element_id
+        required: true
+        schema:
+          title: Element Id
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Read Access Rights Accessright  Element Id  Get
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Read Access Rights
+      tags:
+      - AccessRight
+    put:
+      operationId: update_access_rights_accessright__element_id__put
+      parameters:
+      - in: path
+        name: element_id
+        required: true
+        schema:
+          title: Element Id
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Values
+              type: object
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Update Access Rights Accessright  Element Id  Put
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Update Access Rights
+      tags:
+      - AccessRight
+  /accessrights/:
+    post:
+      operationId: search_access_rights_accessrights__post
+      parameters:
+      - in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          title: Skip
+          type: integer
+      - in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          title: Limit
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Body_search_access_rights_accessrights__post'
+              title: Body
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Search Access Rights Accessrights  Post
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Search Access Rights
+      tags:
+      - AccessRight
+  /auth/login/dronepilot/:
+    post:
+      operationId: login_user_auth_login_dronepilot__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Auth'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Login User Auth Login Dronepilot  Post
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Login User
+      tags:
+      - DronePilot
+  /auth/register/dronepilot/:
+    post:
+      operationId: register_user_auth_register_dronepilot__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DronePilot'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Register User Auth Register Dronepilot  Post
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Register User
+      tags:
+      - DronePilot
+  /auth/verify/dronepilot/{token}:
+    get:
+      operationId: verify_user_auth_verify_dronepilot__token__get
+      parameters:
+      - in: path
+        name: token
+        required: true
+        schema:
+          title: Token
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Verify User Auth Verify Dronepilot  Token  Get
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Verify User
+      tags:
+      - DronePilot
+  /drone/:
+    post:
+      operationId: create_element_drone__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Drone'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Create Element Drone  Post
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Create Element
+      tags:
+      - Drone
+  /drone/{element_id}:
+    delete:
+      operationId: delete_element_drone__element_id__delete
+      parameters:
+      - in: path
+        name: element_id
+        required: true
+        schema:
+          title: Element Id
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Delete Element Drone  Element Id  Delete
+                type: string
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Delete Element
+      tags:
+      - Drone
+    get:
+      operationId: read_element_drone__element_id__get
+      parameters:
+      - in: path
+        name: element_id
+        required: true
+        schema:
+          title: Element Id
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Read Element Drone  Element Id  Get
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Read Element
+      tags:
+      - Drone
+    put:
+      operationId: update_element_drone__element_id__put
+      parameters:
+      - in: path
+        name: element_id
+        required: true
+        schema:
+          title: Element Id
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Values
+              type: object
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Update Element Drone  Element Id  Put
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Update Element
+      tags:
+      - Drone
+  /dronepilot/:
+    post:
+      operationId: create_element_dronepilot__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DronePilot'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Create Element Dronepilot  Post
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Create Element
+      tags:
+      - DronePilot
+  /dronepilot/{element_id}:
+    delete:
+      operationId: delete_element_dronepilot__element_id__delete
+      parameters:
+      - in: path
+        name: element_id
+        required: true
+        schema:
+          title: Element Id
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Delete Element Dronepilot  Element Id  Delete
+                type: string
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Delete Element
+      tags:
+      - DronePilot
+    get:
+      operationId: read_element_dronepilot__element_id__get
+      parameters:
+      - in: path
+        name: element_id
+        required: true
+        schema:
+          title: Element Id
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Read Element Dronepilot  Element Id  Get
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Read Element
+      tags:
+      - DronePilot
+    put:
+      operationId: update_element_dronepilot__element_id__put
+      parameters:
+      - in: path
+        name: element_id
+        required: true
+        schema:
+          title: Element Id
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Values
+              type: object
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Update Element Dronepilot  Element Id  Put
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Update Element
+      tags:
+      - DronePilot
+  /dronepilots/:
+    post:
+      operationId: search_element_dronepilots__post
+      parameters:
+      - in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          title: Skip
+          type: integer
+      - in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          title: Limit
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Body_search_element_dronepilots__post'
+              title: Body
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Search Element Dronepilots  Post
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Search Element
+      tags:
+      - DronePilot
+  /drones/:
+    post:
+      operationId: search_element_drones__post
+      parameters:
+      - in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          title: Skip
+          type: integer
+      - in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          title: Limit
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Body_search_element_drones__post'
+              title: Body
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Search Element Drones  Post
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Search Element
+      tags:
+      - Drone
+  /flightplan/:
+    post:
+      operationId: create_element_flightplan__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlightPlan'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Create Element Flightplan  Post
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Create Element
+      tags:
+      - FlightPlan
+  /flightplan/{element_id}:
+    delete:
+      operationId: delete_element_flightplan__element_id__delete
+      parameters:
+      - in: path
+        name: element_id
+        required: true
+        schema:
+          title: Element Id
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Delete Element Flightplan  Element Id  Delete
+                type: string
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Delete Element
+      tags:
+      - FlightPlan
+    get:
+      operationId: read_element_flightplan__element_id__get
+      parameters:
+      - in: path
+        name: element_id
+        required: true
+        schema:
+          title: Element Id
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Read Element Flightplan  Element Id  Get
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Read Element
+      tags:
+      - FlightPlan
+    put:
+      operationId: update_element_flightplan__element_id__put
+      parameters:
+      - in: path
+        name: element_id
+        required: true
+        schema:
+          title: Element Id
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Values
+              type: object
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Update Element Flightplan  Element Id  Put
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Update Element
+      tags:
+      - FlightPlan
+  /flightplans/:
+    post:
+      operationId: search_element_flightplans__post
+      parameters:
+      - in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          title: Skip
+          type: integer
+      - in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          title: Limit
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Body_search_element_flightplans__post'
+              title: Body
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Search Element Flightplans  Post
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Search Element
+      tags:
+      - FlightPlan
+  /manufacturer/:
+    post:
+      operationId: create_element_manufacturer__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Manufacturer'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Create Element Manufacturer  Post
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Create Element
+      tags:
+      - Manufacturer
+  /manufacturer/{element_id}:
+    delete:
+      operationId: delete_element_manufacturer__element_id__delete
+      parameters:
+      - in: path
+        name: element_id
+        required: true
+        schema:
+          title: Element Id
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Delete Element Manufacturer  Element Id  Delete
+                type: string
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Delete Element
+      tags:
+      - Manufacturer
+    get:
+      operationId: read_element_manufacturer__element_id__get
+      parameters:
+      - in: path
+        name: element_id
+        required: true
+        schema:
+          title: Element Id
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Read Element Manufacturer  Element Id  Get
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Read Element
+      tags:
+      - Manufacturer
+    put:
+      operationId: update_element_manufacturer__element_id__put
+      parameters:
+      - in: path
+        name: element_id
+        required: true
+        schema:
+          title: Element Id
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Values
+              type: object
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Update Element Manufacturer  Element Id  Put
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Update Element
+      tags:
+      - Manufacturer
+  /manufacturers/:
+    post:
+      operationId: search_element_manufacturers__post
+      parameters:
+      - in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          title: Skip
+          type: integer
+      - in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          title: Limit
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Body_search_element_manufacturers__post'
+              title: Body
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Search Element Manufacturers  Post
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Search Element
+      tags:
+      - Manufacturer
+  /role/:
+    post:
+      operationId: create_element_role__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Role'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Create Element Role  Post
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Create Element
+      tags:
+      - Role
+  /role/{element_id}:
+    delete:
+      operationId: delete_element_role__element_id__delete
+      parameters:
+      - in: path
+        name: element_id
+        required: true
+        schema:
+          title: Element Id
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Delete Element Role  Element Id  Delete
+                type: string
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Delete Element
+      tags:
+      - Role
+    get:
+      operationId: read_element_role__element_id__get
+      parameters:
+      - in: path
+        name: element_id
+        required: true
+        schema:
+          title: Element Id
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Read Element Role  Element Id  Get
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Read Element
+      tags:
+      - Role
+    put:
+      operationId: update_element_role__element_id__put
+      parameters:
+      - in: path
+        name: element_id
+        required: true
+        schema:
+          title: Element Id
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Values
+              type: object
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Update Element Role  Element Id  Put
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Update Element
+      tags:
+      - Role
+  /roles/:
+    post:
+      operationId: search_element_roles__post
+      parameters:
+      - in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          title: Skip
+          type: integer
+      - in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          title: Limit
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Body_search_element_roles__post'
+              title: Body
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Search Element Roles  Post
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Search Element
+      tags:
+      - Role
